@@ -1,0 +1,38 @@
+﻿<Window x:Class="tree.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tree.View"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="597" Width="456.471">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConv"/>
+        <DataTemplate x:Key="fileListTemplate">
+            <local:MovieFileControl />
+        </DataTemplate>
+        <Style x:Key="myHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="284*"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="listView"
+                  ItemTemplate="{StaticResource fileListTemplate}"
+                  ItemsSource="{Binding MovieFileList}"
+                  SelectionMode="Single" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <Button Content="Load" HorizontalAlignment="Left" Height="20" Margin="23,10,0,0" VerticalAlignment="Top" Width="59" Command="{Binding LoadCommand}" />
+
+    </Grid>
+</Window>
