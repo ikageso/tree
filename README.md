@@ -2,7 +2,7 @@
 
 ツリー関係をDetailで表示する
 
-![](https://github.com/ikageso/tree/wiki/images/mainWindow.jpg)
+![](https://github.com/ikageso/tree/wiki/images/mainWindow.png)
 
 
 ### Requirements
