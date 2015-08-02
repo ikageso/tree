@@ -48,7 +48,7 @@ namespace tree.ViewModel
 
         private RelayCommand<string> _LoadCommand;
         /// <summary>
-        /// ”ñ•\Ž¦
+        /// LoadCommand
         /// </summary>
         public RelayCommand<string> LoadCommand
         {
@@ -66,5 +66,24 @@ namespace tree.ViewModel
                 return _LoadCommand;
             }
         }
+
+        private bool _IsTile = false;
+        /// <summary>
+        /// IsTile
+        /// </summary>
+        public bool IsTile
+        {
+            get
+            {
+                return _IsTile;
+            }
+            set
+            {
+                _IsTile = value;
+                RaisePropertyChanged("IsTile");
+            }
+        }
+
+
     }
 }

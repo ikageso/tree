@@ -20,9 +20,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
-            <RowDefinition Height="284*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView x:Name="listView"
+        <!--<ListView x:Name="listView"
                   ItemTemplate="{StaticResource fileListTemplate}"
                   ItemsSource="{Binding MovieFileList}"
                   SelectionMode="Single" Grid.Row="1">
@@ -31,8 +31,55 @@
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </ListView.ItemContainerStyle>
+        </ListView>-->
+        <ListView 
+                  ItemTemplate="{StaticResource fileListTemplate}"
+                  ItemsSource="{Binding MovieFileList}"
+                  SelectionMode="Single" Grid.Row="1"
+            >
+            <ItemsControl.Style>
+                <Style TargetType="ItemsControl">
+                    <Setter Property="ItemsPanel">
+                        <Setter.Value>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsTile}" Value="true">
+                            <Setter Property="ItemsPanel">
+                                <Setter.Value>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel/>
+                                    </ItemsPanelTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ItemsControl.Style>
+            <!--<ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>-->
         </ListView>
-        <Button Content="Load" HorizontalAlignment="Left" Height="20" Margin="23,10,0,0" VerticalAlignment="Top" Width="59" Command="{Binding LoadCommand}" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Load" Command="{Binding LoadCommand}"  Margin="3"/>
+            <RadioButton Content="タイル" IsChecked="{Binding IsTile}" Style="{StaticResource {x:Type ToggleButton}}" Grid.Column="3" Margin="3"/>
+            <RadioButton Content="リスト" IsChecked="True"  Style="{StaticResource {x:Type ToggleButton}}" Grid.Column="2" Margin="3"/>
+        </Grid>
 
     </Grid>
 </Window>
