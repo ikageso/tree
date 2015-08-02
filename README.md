@@ -1,9 +1,9 @@
 # tree
 
+[![Build status](https://ci.appveyor.com/api/projects/status/pmwrqo7kwqw85hfj?svg=true)](https://ci.appveyor.com/project/ikageso/tree)
+
 * ツリー関係をDetailで表示する
 * リスト表示/タイル表示を切り替える
-
-[![Build status](https://ci.appveyor.com/api/projects/status/pmwrqo7kwqw85hfj?svg=true)](https://ci.appveyor.com/project/ikageso/tree)
 
 ![](https://github.com/ikageso/tree/wiki/images/mainwindow.jpg)
 
